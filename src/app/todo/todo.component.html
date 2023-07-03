@@ -1,13 +1,20 @@
 <mat-card>
-  <form novalidate [formGroup]="todoForm" (ngSubmit)="onAdd(todoForm)">
+  <form novalidate #form="ngForm" [formGroup]="todoForm" (ngSubmit)="onAdd(form)">
 
     <mat-card-header>
       <mat-card-title>Neues Todo erstellen</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-form-field>
+      <mat-form-field class="w-full">
         <mat-label>Beschreibung</mat-label>
         <input matInput formControlName="description" placeholder="Beschreibung">
+        <mat-hint>Muesch igeh</mat-hint>
+        <mat-error *ngIf="todoForm.get('description')?.hasError('required')">
+          Die <strong>Beschreibung</strong> ist ein <strong>Pflichtfeld</strong>
+        </mat-error>
+        <mat-error *ngIf="todoForm.get('description')?.hasError('minlength')">
+          Die <strong>Beschreibung</strong> muss mindestens <strong>3 Zeichen</strong> lang sein
+        </mat-error>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>

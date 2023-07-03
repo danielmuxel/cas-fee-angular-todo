@@ -26,7 +26,10 @@ export class TodoComponent implements OnInit {
   ];
 
   public todoForm = new FormGroup({
-    description: new FormControl(null, [Validators.required]),
+    description: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
   });
 
   public onAdd(form: FormGroupDirective) {
