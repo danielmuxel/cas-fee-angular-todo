@@ -5,7 +5,7 @@ import {
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
-import { TodoItem } from './todo.type';
+import { TodoItem } from '../todo.type';
 
 @Component({
   selector: 'app-todo-add',
@@ -13,13 +13,13 @@ import { TodoItem } from './todo.type';
 })
 export class TodoAddComponent implements OnInit {
   constructor() {}
-  
+
   ngOnInit() {}
 
   @Output()
   public added = new EventEmitter<TodoItem>();
 
-  @Input({required: true})
+  @Input({ required: true })
   public nextId: number = 0;
 
   public todoForm = new FormGroup({
@@ -28,7 +28,6 @@ export class TodoAddComponent implements OnInit {
       Validators.minLength(3),
     ]),
   });
-  
 
   public onAdd(form: FormGroupDirective) {
     if (this.todoForm.valid && this.todoForm.dirty) {
@@ -43,5 +42,4 @@ export class TodoAddComponent implements OnInit {
     this.todoForm.reset();
     this.todoForm.markAsUntouched();
   }
-
 }

@@ -4,7 +4,7 @@ import { Observable, catchError, tap } from 'rxjs';
 import { TodoItem } from './todo.type';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TodoService {
   constructor(private httpClient: HttpClient, private snackbar: MatSnackBar) {}
 
