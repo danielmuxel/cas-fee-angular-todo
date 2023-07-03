@@ -1,0 +1,42 @@
+<mat-card>
+  <form novalidate [formGroup]="todoForm" (ngSubmit)="onAdd(todoForm)">
+
+    <mat-card-header>
+      <mat-card-title>Neues Todo erstellen</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Beschreibung</mat-label>
+        <input matInput formControlName="description" placeholder="Beschreibung">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Hinzufügen</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>To do</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let todo of (items | todo: false)">
+        <mat-checkbox [(ngModel)]="todo.checked">{{todo.description}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Done</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let todo of (items | todo: true)">
+        <mat-checkbox [(ngModel)]="todo.checked">{{todo.description}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
