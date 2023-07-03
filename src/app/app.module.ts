@@ -15,10 +15,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { TodoComponent } from './todo/todo.component';
 import { TodoPipe } from './todo/todo.pipe';
 import { TodoAddComponent } from './todo/todo-add.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent, TodoComponent, TodoPipe, TodoAddComponent],
@@ -27,6 +29,7 @@ import { TodoAddComponent } from './todo/todo-add.component';
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -36,6 +39,7 @@ import { TodoAddComponent } from './todo/todo-add.component';
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoItem } from './todo.type';
+import { TodoService } from './todo.service';
 
 
 @Component({
@@ -8,21 +9,15 @@ import { TodoItem } from './todo.type';
   styleUrls: ['todo.component.scss'],
 })
 export class TodoComponent implements OnInit {
-  public items: Array<TodoItem> = [
-    {
-      id: 1,
-      checked: true,
-      description: 'Erste Angular Applikation erstellen',
-    },
-    { id: 2, checked: true, description: 'Todo Komponente erstellen' },
-    { id: 3, checked: false, description: 'Todos anzeigen' },
-    { id: 4, checked: false, description: 'Todos hinzufügen' },
-    { id: 5, checked: false, description: 'Todos erledigen' },
-  ];
+  public items: Array<TodoItem> = [];
 
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.todoService.load().subscribe((todos) => {
+      this.items = todos;
+    });
+  }
 
   onAdd(item: TodoItem) {
     this.items.push(item);
