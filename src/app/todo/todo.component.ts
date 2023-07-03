@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoItem } from './todo.type';
-import {
-  FormControl,
-  FormGroup,
-  FormGroupDirective,
-  Validators,
-} from '@angular/forms';
+
 
 @Component({
   selector: 'app-todo',
@@ -25,28 +20,11 @@ export class TodoComponent implements OnInit {
     { id: 5, checked: false, description: 'Todos erledigen' },
   ];
 
-  public todoForm = new FormGroup({
-    description: new FormControl(null, [
-      Validators.required,
-      Validators.minLength(3),
-    ]),
-  });
-
-  public onAdd(form: FormGroupDirective) {
-    if (this.todoForm.valid && this.todoForm.dirty) {
-      this.items.push({
-        id: this.items.length + 1,
-        description: this.todoForm.value.description ?? '',
-        checked: false,
-      });
-    }
-
-    form.resetForm();
-    this.todoForm.reset();
-    this.todoForm.markAsUntouched();
-  }
-
   constructor() {}
 
   ngOnInit() {}
+
+  onAdd(item: TodoItem) {
+    this.items.push(item);
+  }
 }

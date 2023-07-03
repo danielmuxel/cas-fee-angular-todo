@@ -18,9 +18,10 @@ import { MatInputModule } from '@angular/material/input';
 
 import { TodoComponent } from './todo/todo.component';
 import { TodoPipe } from './todo/todo.pipe';
+import { TodoAddComponent } from './todo/todo-add.component';
 
 @NgModule({
-  declarations: [AppComponent, NavigationComponent, TodoComponent, TodoPipe],
+  declarations: [AppComponent, NavigationComponent, TodoComponent, TodoPipe, TodoAddComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
